@@ -48,13 +48,12 @@ body {
 }
 
 .hero {
-    height: 800px;
+    height: 200px;
     width: 100%;
     margin-bottom: 25px;
-    background-image: url("../Images/digital-marketing-meeting.jpg");
+    /* background-image: url("../Images/digital-marketing-meeting.jpg"); */
     background-size: cover;
     background-position: center;
-    alt: "A team of professionals in a planning meeting";
 }
 
 main {
