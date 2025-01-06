@@ -38,6 +38,7 @@ header{
   position: fixed;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
 }
 
 #logoMain {  
@@ -63,7 +64,8 @@ header{
 #jonathan {
   max-height: 300px;
   /* width: 300px; */
-  display: flex;
+  float: left;
+  padding: 10px;
 }
 
 a .minilogo {
@@ -72,11 +74,9 @@ a .minilogo {
 
 p {
   font-size: 18px;
-  display: flex;
 }
 
 nav{
-  margin-top: 18px;
   margin-right: 38px;
 }
 
@@ -92,7 +92,7 @@ li {
 
 .vl{
   border-left: 5px solid var(--colAccentSharp);
-  height: 100vh;
+  height: 150vh;
   width: 1%;
   margin-left: 2%;
   display: inline-block;
@@ -119,21 +119,21 @@ h3 {
 /* Central Selling Points headers */
 h4 {
   padding: 10px;
-  font-size: 120%;
   font-size: 18px;
   text-align: center;
 }
 
-
 main {
-  width: 60%;
+  width: 80%;
   display: inline-block;
   margin-left: 20px;
   margin-top: 200px;
   vertical-align: top;
 }
 
+
 .maincontent {
+  width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
@@ -145,6 +145,7 @@ main {
   font-size: 18px;
   line-height: 1.5;
   color: var(--colBlackish);
+  float: left;
 }
 
 .project {
@@ -153,7 +154,11 @@ main {
   padding: 10px;
   float: left;
   width: 25%;
-  /* display: flex; */
+  min-height: 350px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* height: 250px; */
 }
 .project img {
@@ -162,39 +167,30 @@ main {
   border-radius: 10px;
   margin-bottom: 10px;
 }
-.project p {
+
+/* .project p {
   display: flex;
-}
+} */
 
 #heroproject {
   width: 100%
 }
-
-/* aside {
+#heroproject img {
+  max-width: 200px;
   border-radius: 10px;
-  width: 25%;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 200px;
-  padding: 10px;
+}
+
+.links {
   display: flex;
-  flex-wrap: wrap;
-} */
+  justify-content: space-evenly;
+}
 
 .tidbit {
   text-align: center;
-  width: 25%;
-
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  
-  justify-content: space-evenly;
+  margin: 10px;
   border: 1px solid var(--colBlackish);
   border-radius: 10px;
-  box-shadow: 5px 5px 5px var(--colBlackish);
-  display: flex;
-  flex-direction: column;
+  box-shadow: 5px 5px 5px var(--colBlackish); 
 
 }
 
@@ -202,39 +198,59 @@ main {
   margin-top: 10px;
 } */
 
+.centralSellingPoints h3 {
+  grid-column: 1 / span 3;
+  font-size: 48px;
+}
+
 .centralSellingPoints {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin-right: 2%;
   width: 100%;
   /* float: right; */
   background-color: var(--colTertiaryBase);
   border: 1px solid var(--colBlackish);
   color: var(--colBlackish);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .italics{
   font-style: italic;
 }
 
-.star {
+#star {
   color: var(--colAccentSharp);
+}
+#link {
+  color: var(--colAccentBold);
 }
 
 footer {
+  display: flex;
+  flex-direction: column;
   background-color: var(--colBlackish);
   color: var(--colWhitish);
   padding: 4px;
+  align-items: center;
 }
 
-@media screen and (max-width: var(--bs-breakpoint-md)) {
+@media screen and (max-width: 768px) {
+  /* body {
+    background-color: var(--colBlackish);
+  } */
   .project {
     width: 50%;
   }
+  .centralSellingPoints h3 {
+    grid-column: 1 / span 1;
+    font-size: 36px;
+  }
+  .centralSellingPoints {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
-@media screen and (max-width: var(--bs-breakpoint-sm)) {
+@media screen and (max-width: 500px) {
   .project {
     width: 100%;
   }
