@@ -1,0 +1,241 @@
+:root {
+    --bs-breakpoint-xs: 0;
+    --bs-breakpoint-sm: 500px;
+    --bs-breakpoint-md: 768px;
+    --bs-breakpoint-lg: 992px;
+    --bs-breakpoint-xl: 1280px;
+    --bs-breakpoint-xxl: 1400px;
+    
+    --colBlackish: rgba(10,18,2,1);
+    --colPrimaryDark: rgba(69, 110, 21, 1);
+    --colPrimaryBase: rgba(88, 151, 11, 1);
+    --colPrimaryLite: rgba(155, 195, 115, 1);
+    --colSecondaryDark: rgba(90, 85, 65, 1);
+    --colSecondaryBase: rgba(90, 85, 65, 1);
+    --colSecondaryLite: rgba(176, 156, 136, 1);
+    --colTertiaryBase: rgba(217, 1, 16, 1);
+    --colAccentBold: rgba(251,62,3,1);
+    --colAccentSharp: rgba(255,220,35,1);
+    --colWhitish: rgba(250,255,235,1);
+}
+
+* {
+    font-family: 'Granjon', 'Truesdell', 'Garamond', Georgia, 'Times New Roman', Times, serif;
+    font: 'Granjon', 'Truesdell', 'Garamond', Georgia, 'Times New Roman', Times, serif;
+}
+  
+body {
+    margin: 0;
+    padding: 0;
+    color: var(----colBlackish);
+    background-color: var(--colSecondaryLite);
+}
+
+header{
+  background-color: var(--colWhitish);
+  display: flex;
+  margin-top: 11px;
+  position: fixed;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#logoMain {  
+    align-items: start;
+    width: 174px;
+    height: 174px;
+    margin: 0 auto;
+    display: inline-block
+}
+
+#facebookLogo {
+  width: 30px;
+}
+#gmailLogo {
+  width: 55px;
+}
+#githubLogo {
+  width: 55px;
+}
+#linkedInLogo {
+  width: 30px;
+}
+#jonathan {
+  max-height: 300px;
+  /* width: 300px; */
+  display: flex;
+}
+
+a .minilogo {
+  display: inline;
+}
+
+p {
+  font-size: 18px;
+  display: flex;
+}
+
+nav{
+  margin-top: 18px;
+  margin-right: 38px;
+}
+
+li {
+  color: var(--colPrimaryDark);
+  font-size: 32pt;
+  display: inline-block;
+  justify-content: space-between;
+  margin-left: 25px;
+  display: inline-block;
+  margin-left: 25px;
+}
+
+.vl{
+  border-left: 5px solid var(--colAccentSharp);
+  height: 100vh;
+  width: 1%;
+  margin-left: 2%;
+  display: inline-block;
+}
+
+/* Main Content Section headers */
+h2 {
+  padding: 10px;
+  font-size: 135%;
+  color: var(--colPrimaryLite);
+  background-color: var(--colSecondaryDark);
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* My Projects headers */
+h3 {
+  text-align: center;
+  font-size: 125%;
+  font-weight: bolder;
+  float: auto;
+}
+
+/* Central Selling Points headers */
+h4 {
+  padding: 10px;
+  font-size: 120%;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+main {
+  width: 60%;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 200px;
+  vertical-align: top;
+}
+
+.maincontent {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: var(--colWhitish);
+  border: 1px solid var(--colBlackish);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--colBlackish);
+  text-align: justify;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--colBlackish);
+}
+
+.project {
+  border-style: solid;
+  border-width: 1px;
+  padding: 10px;
+  float: left;
+  width: 25%;
+  /* display: flex; */
+  /* height: 250px; */
+}
+.project img {
+  max-width: 100px;
+  display: flex;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.project p {
+  display: flex;
+}
+
+#heroproject {
+  width: 100%
+}
+
+/* aside {
+  border-radius: 10px;
+  width: 25%;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 200px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+.tidbit {
+  text-align: center;
+  width: 25%;
+
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-content: space-evenly;
+  border: 1px solid var(--colBlackish);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--colBlackish);
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* p {
+  margin-top: 10px;
+} */
+
+.centralSellingPoints {
+  margin-right: 2%;
+  width: 100%;
+  /* float: right; */
+  background-color: var(--colTertiaryBase);
+  border: 1px solid var(--colBlackish);
+  color: var(--colBlackish);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.italics{
+  font-style: italic;
+}
+
+.star {
+  color: var(--colAccentSharp);
+}
+
+footer {
+  background-color: var(--colBlackish);
+  color: var(--colWhitish);
+  padding: 4px;
+}
+
+@media screen and (max-width: var(--bs-breakpoint-md)) {
+  .project {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: var(--bs-breakpoint-sm)) {
+  .project {
+    width: 100%;
+  }
+}

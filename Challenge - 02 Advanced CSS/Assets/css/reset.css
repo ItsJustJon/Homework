@@ -1,0 +1,77 @@
+/* reset.css */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+    min-height: 100%;
+    line-height: 1;
+    font-size: 100%;
+}
+
+/* Remove default padding */
+ul,
+ol {
+    padding: 0;
+    list-style: none;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* Remove default text decoration */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+  /* Inherit fonts for inputs and buttons, Matches the font of special elements to the rest of the page */
+input, select, option, optgroup, textarea, button,
+  pre, code {
+    font-size: 100%;
+    font: inherit;
+    font-family: inherit;
+  }
+
+
+/* Remove animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none;
+        transition: none;
+    }
+}
