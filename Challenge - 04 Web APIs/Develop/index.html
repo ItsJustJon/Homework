@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My First Blog</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>My First Blog</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <link rel="stylesheet" href="./assets/css/form.css" />
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+        <link rel="stylesheet" href="./assets/css/form.css" />
 
-    <script defer src="./assets/js/logic.js" type="text/javascript"></script>
-    <script defer src="./assets/js/form.js" type="text/javascript"></script>
-  </head>
-<body>
-  <!-- TODO: Create landing page elements to match the mock-up provided. At the very least, include the following elements. -->
+        <script defer src="./assets/js/logic.js"></script>
+        <script defer src="./assets/js/form.js"></script>
+        <!-- <script defer src="./assets/js/textIndex.js"></script> -->
+    </head>
+    <body>
+        <form>
+            <label for="username">Username</label>
+            <input type="text" id="username" aria-label="username" for="username" />
 
-  <!-- A form element that contains the following: -->
+            <label for="title">Title</label>
+            <input type="text" id="title" aria-label="title" for="title" />
 
-    <!-- An input element whose label and id are `username` -->
-
-    <!-- An input element whose label and id are `title` -->
-
-    <!-- A textarea element whose label and id are `content` -->
-
-    <!-- A p element whose id is `error` -->
-
-</body>
+            <label for="content">Content</label>
+            <textarea id="content" aria-label="content" for="content"></textarea>
+            <p id="error">Please complete the form.</p>  
+        </form>
+        <br>
+        <br>
+        <button id="submit">Submit</button>
+    </body>
 </html>
