@@ -1,8 +1,8 @@
-# Auto-generated README.md
+# A Project for Automatic Readme Creation
     
 ## Description
 
-This projected is designed to auto-generate a README.md file for your project.
+This program will automatically generate the markdown needed for a readme file based on user responses.
 
 
 ## Table of Contents
@@ -13,7 +13,9 @@ This projected is designed to auto-generate a README.md file for your project.
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
-* [Contact](#questions)
+* [Contact](#contact)
+* [GitHub](#github)
+* [Email](#email)
 
 
 ## Installation
@@ -32,11 +34,11 @@ This project's use is to auto-generate a README.md file for your project.
 
 ## Contributing
 
-To contribute to this project, please fork the repository and create a pull request.
+In order to contribute or add to this project, either create a branch for development or fork the project and modify as desired.
 
 
 
-There are no tests for this project.
+No tests included.
 
 
 ## Questions
