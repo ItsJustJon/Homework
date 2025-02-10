@@ -91,11 +91,8 @@ ${answers.tests}
 
 If you have questions about this file, please contact me at the links below.
 
-
-## Contact
-
-* GitHub: [${answers.gitHubName}]
-* Email: [${answers.emailAddy}]
+* GitHub: [${answers.gitHubName}] (https://github.com/${answers.gitHubName})
+* Email: ${answers.emailAddy}
 
 `;
 }

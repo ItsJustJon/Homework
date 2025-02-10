@@ -13,9 +13,7 @@ This projected is designed to auto-generate a README.md file for your project.
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
-* [Contact](#contact)
-* [GitHub](#github)
-* [Email](#email)
+* [Contact](#questions)
 
 
 ## Installation
@@ -45,9 +43,6 @@ There are no tests for this project.
 
 If you have questions about this file, please contact me at the links below.
 
-
-## Contact
-
-* GitHub: [ItsJustJon]
-* Email: [Jonathan.Hummer@gmail.com]
+* GitHub: [ItsJustJon] (https://github.com/ItsJustJon)
+* Email: Jonathan.Hummer@gmail.com
 
