@@ -32,7 +32,7 @@ interface Coordinates {
 // TODO: Complete the WeatherService class
 class WeatherService {
     // TODO: Define the baseURL, API key, and city name properties
-    private baseURL: string = process.env.BASE_URL || '';
+    private baseURL: string = process.env.API_BASE_URL || '';
     private apiKey: string = process.env.API_KEY || '';
     private cityName: string = '';
 
@@ -52,6 +52,8 @@ class WeatherService {
     // TODO: Create buildGeocodeQuery method
     private buildGeocodeQuery(): string {
         return `${this.baseURL}/geocode/v1/json?q=${this.cityName}&key=${this.apiKey}`;
+
+        // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
     }
     // TODO: Create buildWeatherQuery method
     private buildWeatherQuery(coordinates: Coordinates): string {
