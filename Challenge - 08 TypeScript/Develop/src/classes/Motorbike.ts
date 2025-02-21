@@ -57,6 +57,10 @@ class Motorbike extends Vehicle {
     return this.model;
   };
 
+  get getWeight(): number {
+    return this.weight;
+  };
+
   // TODO: Override the printDetails method from the Vehicle class
   // TODO: The method should call the printDetails method of the parent class
   // TODO: The method should log the details of the Motorbike

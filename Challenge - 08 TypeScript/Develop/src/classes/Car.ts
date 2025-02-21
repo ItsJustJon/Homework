@@ -87,6 +87,10 @@ class Car extends Vehicle {
   get getModel(): string {
     return this.model;
   };
+
+  get getWeight(): number {
+    return this.weight;
+  };
 }
 
 // Export the Car class as the default export

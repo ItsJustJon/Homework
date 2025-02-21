@@ -4,6 +4,7 @@ import Truck from "./Truck.js";
 import Car from "./Car.js";
 import Motorbike from "./Motorbike.js";
 import Wheel from "./Wheel.js";
+import { parse } from "path";
 
 // define the Cli class
 class Cli {
@@ -39,8 +40,8 @@ class Cli {
           message: 'Select a vehicle to perform an action on',
           choices: this.vehicles.map((vehicle) => {
             return {
-              name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
-              value: vehicle.vin,
+              name: `${vehicle.getVin} -- ${vehicle.getMake} ${vehicle.getModel}`,
+              value: vehicle.getVin,
             };
           }),
         },
@@ -87,35 +88,41 @@ class Cli {
           type: 'input',
           name: 'color',
           message: 'Enter Color',
+          default: 'black',
         },
         {
           type: 'input',
           name: 'make',
           message: 'Enter Make',
+          default: 'Hyundai',
         },
         {
           type: 'input',
           name: 'model',
           message: 'Enter Model',
+          default: 'Azera',
         },
         {
           type: 'input',
           name: 'year',
           message: 'Enter Year',
+          default: '2017',
         },
         {
           type: 'input',
           name: 'weight',
           message: 'Enter Weight',
+          default: '3871',
         },
         {
           type: 'input',
           name: 'topSpeed',
           message: 'Enter Top Speed',
+          default: '130',
         },
       ])
       .then((answers) => {
-        const car = new Car(
+        const car : any = new Car(
           // TODO: The generateVin method is static and should be called using the class name Cli, make sure to use Cli.generateVin() for creating a truck and motorbike as well!
           Cli.generateVin(),
           answers.color,
@@ -143,41 +150,48 @@ class Cli {
           type: 'input',
           name: 'color',
           message: 'Enter Color',
+          default: 'silver',
         },
         {
           type: 'input',
           name: 'make',
           message: 'Enter Make',
+          default: 'Nissan',
         },
         {
           type: 'input',
           name: 'model',
           message: 'Enter Model',
+          default: 'Titan',
         },
         {
           type: 'input',
           name: 'year',
           message: 'Enter Year',
+          default: '2007',
         },
         {
           type: 'input',
           name: 'weight',
           message: 'Enter Weight',
+          default: '6422',
         },
         {
           type: 'input',
           name: 'topSpeed',
           message: 'Enter Top Speed',
+          default: '112',
         },
         {
           type: 'input',
           name: 'towingCapacity',
           message: 'Enter Towing Capacity',
+          default: '9500',
         },
       ])
       .then((answers) => {
         // TODO: Use the answers object to pass the required properties to the Truck constructor
-        const truck = new Truck(
+        const truck : any = new Truck(
           Cli.generateVin(),  
           answers.color,
           answers.make,
@@ -186,6 +200,8 @@ class Cli {
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
           [],
+          parseInt(answers.towingCapacity),
+        );
         // TODO: push the truck to the vehicles array
         this.vehicles.push(truck);
         // TODO: set the selectedVehicleVin to the vin of the truck
@@ -203,51 +219,61 @@ class Cli {
           type: 'input',
           name: 'color',
           message: 'Enter Color',
+          default: 'black',
         },
         {
           type: 'input',
           name: 'make',
           message: 'Enter Make',
+          default: 'Harley Davidson',
         },
         {
           type: 'input',
           name: 'model',
           message: 'Enter Model',
+          default: 'Sportster',
         },
         {
           type: 'input',
           name: 'year',
           message: 'Enter Year',
+          default: '2014',
         },
         {
           type: 'input',
           name: 'weight',
           message: 'Enter Weight',
+          default: '580',
         },
         {
           type: 'input',
           name: 'topSpeed',
           message: 'Enter Top Speed',
+          default: '118',
         },
         {
           type: 'input',
           name: 'frontWheelDiameter',
           message: 'Enter Front Wheel Diameter',
+          default: '19',
         },
         {
           type: 'input',
           name: 'frontWheelBrand',
           message: 'Enter Front Wheel Brand',
+          default: 'Commander III',
         },
         {
           type: 'input',
           name: 'rearWheelDiameter',
           message: 'Enter Rear Wheel Diameter',
+          default: '16',
         },
         {
           type: 'input',
           name: 'rearWheelBrand',
           message: 'Enter Rear Wheel Brand',
+          default: 'Shinko 777',
         },
       ])
       .then((answers) => {
@@ -263,11 +289,12 @@ class Cli {
           [
             new Wheel(parseInt(answers.frontWheelDiameter), answers.frontWheelBrand),
             new Wheel(parseInt(answers.rearWheelDiameter), answers.rearWheelBrand),
-          ] 
+          ],
+        );
         // TODO: push the motorbike to the vehicles array
         this.vehicles.push(motorbike);
         // TODO: set the selectedVehicleVin to the vin of the motorbike
-        this.selectedVehicleVin = motorbike.vin;
+        this.selectedVehicleVin = motorbike.getVin;
         // TODO: perform actions on the motorbike
         this.performActions();
       });
@@ -284,7 +311,7 @@ class Cli {
           message: 'Select a vehicle to tow',
           choices: this.vehicles.map((vehicle) => {
             return {
-              name: `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`,
+              name: `${vehicle.getVin} -- ${vehicle.getMake} ${vehicle.getModel}`,
               value: vehicle,
             };
           }),
@@ -335,56 +362,56 @@ class Cli {
         if (answers.action === 'Print details') {
           // find the selected vehicle and print its details
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].printDetails();
             }
           }
         } else if (answers.action === 'Start vehicle') {
           // find the selected vehicle and start it
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].start();
             }
           }
         } else if (answers.action === 'Accelerate 5 MPH') {
           // find the selected vehicle and accelerate it by 5 MPH
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].accelerate(5);
             }
           }
         } else if (answers.action === 'Decelerate 5 MPH') {
           // find the selected vehicle and decelerate it by 5 MPH
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].decelerate(5);
             }
           }
         } else if (answers.action === 'Stop vehicle') {
           // find the selected vehicle and stop it
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].stop();
             }
           }
         } else if (answers.action === 'Turn right') {
           // find the selected vehicle and turn it right
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].turn('right');
             }
           }
         } else if (answers.action === 'Turn left') {
           // find the selected vehicle and turn it left
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].turn('left');
             }
           }
         } else if (answers.action === 'Reverse') {
           // find the selected vehicle and reverse it
           for (let i = 0; i < this.vehicles.length; i++) {
-            if (this.vehicles[i].vin === this.selectedVehicleVin) {
+            if (this.vehicles[i].getVin === this.selectedVehicleVin) {
               this.vehicles[i].reverse();
             }
           }
