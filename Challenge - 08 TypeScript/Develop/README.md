@@ -23,7 +23,7 @@ Because this application won't be deployed, I have provided a screenshare video/
 
 ## Installation
 
-To install this project, run node index.js in the terminal.
+To install this project, run npm start in the terminal.
 
 
 ## Usage
