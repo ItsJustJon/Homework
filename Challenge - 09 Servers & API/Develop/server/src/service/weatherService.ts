@@ -28,7 +28,6 @@ interface Coordinates {
     }
   }
 
-
 // TODO: Complete the WeatherService class
 class WeatherService {
     // TODO: Define the baseURL, API key, and city name properties

@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "npx tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "potato": "echo \"potato\"",
+    "catfight": "catfight"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
