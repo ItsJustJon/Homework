@@ -10,6 +10,7 @@ VALUES
 ('Human Resources Manager', 65000, 5),
 ('CEO', 310850, 6);
 
+
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
 VALUES 
 ('Brian', 'Plantamanagera', 1, NULL),
@@ -18,3 +19,4 @@ VALUES
 ('Paul', 'Coder', 4, NULL),
 ('Patty', 'Hiring', 5, NULL),
 ('Jonas', 'Bigboss', 6, NULL);
+
