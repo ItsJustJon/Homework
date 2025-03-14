@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import { Client } from 'pg';
 import { config } from 'dotenv';
-import { viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee, updateEmployeeRole } from './queries.js';
+import { viewDepartments, viewRoles, viewEmployees, addDepartment, addRole, addEmployee, updateEmployeeRole, getWeatherForecast } from './queries.js';
 
 // Load environment variables from .env file
 config();
@@ -30,6 +30,7 @@ const mainMenu = async (): Promise<void> => {
         'Add a role',
         'Add an employee',
         'Update an employee role',
+        'Get weather forecast',
         'Exit',
       ],
     },
@@ -56,6 +57,9 @@ const mainMenu = async (): Promise<void> => {
       break;
     case 'Update an employee role':
       await updateEmployeeRole(client);
+      break;
+    case 'Get weather forecast':
+      await getWeatherForecast();
       break;
     case 'Exit':
       client.end();
