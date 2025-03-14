@@ -4,57 +4,101 @@ import type { Request, Response } from 'express';
 import { OpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { z } from "zod";
-import { StructuredOutputParser, OutputFixingParser } from 'langchain/output_parsers';
+import { StructuredOutputParser } from 'langchain/output_parsers';
 
 dotenv.config();
 
 const port = process.env.PORT || 3001;
 const apiKey = process.env.OPENAI_API_KEY;
 
-// Check if the API key is defined
+// Ensure API key is present
 if (!apiKey) {
   console.error('OPENAI_API_KEY is not defined. Exiting...');
   process.exit(1);
 }
 
+const model = new OpenAI({
+  temperature: 0.7,
+  openAIApiKey: apiKey,
+  modelName: 'gpt-4',
+  maxTokens: 500,
+});
+
 const app = express();
 app.use(express.json());
 
-// TODO: Initialize the OpenAI model
+// Define the schema for structured output
+const forecastSchema = z.object({
+  forecast: z.array(z.object({
+    date: z.string(),
+    description: z.string(),
+  })),
+});
 
-// TODO: Define the parser for the structured output
+// Create a structured output parser
+const parser = StructuredOutputParser.fromZodSchema(forecastSchema);
 
-// TODO: Get the format instructions from the parser
+let promptTemplate: PromptTemplate | null = null;
 
-// TODO: Define the prompt template
+// Function to initialize prompt template
+const initializePromptTemplate = async () => {
+  const formatInstructions = await parser.getFormatInstructions();
+  
+  promptTemplate = new PromptTemplate({
+    template: `Pretty please, provide a 5-day weather forecast for {location} in the voice of a sports commentator, someone sassy like Shaquille O'Neill meets Shannon Sharpe. Format your response as JSON using these instructions: {format_instructions}`,
+    inputVariables: ["location"],
+    partialVariables: { format_instructions: formatInstructions },
+  });
 
-// Create a prompt function that takes the user input and passes it through the call method
-const promptFunc = async (input: string) => {
-        // TODO: Format the prompt with the user input
-        // TODO: Call the model with the formatted prompt
-        // TODO: return the JSON response
-        // TODO: Catch any errors and log them to the console
+  console.log("Prompt template initialized.");
 };
 
-// Endpoint to handle request
-app.post('/forecast', async (req: Request, res: Response): Promise<void> => {
+// Function to generate the AI response
+const getForecast = async (location: string) => {
   try {
-    const location: string = req.body.location;
+    if (!promptTemplate) {
+      throw new Error("Server not ready. Try again later.");
+    }
+
+    const formattedPrompt = await promptTemplate.format({ location });
+
+    // Call the OpenAI model
+    const response = await model.call(formattedPrompt);
+
+    // Parse the response into structured JSON
+    return await parser.parse(response);
+
+  } catch (error) {
+    console.error('Error generating forecast:', error);
+    return { error: 'Failed to retrieve forecast.' };
+  }
+};
+
+// API Endpoint
+app.post('/forecast', async (req: Request, res: Response) => {
+  try {
+    const location = req.body.location;
+
     if (!location) {
-      res.status(400).json({
-        error: 'Please provide a location in the request body.',
-      });
+      return res.status(400).json({ error: 'Please provide a location.' });
     }
-    const result: any = await promptFunc(location);
-    res.json({ result });
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error('Error:', error.message);
-    }
-    res.status(500).json({ error: 'Internal Server Error' });
+
+    const forecast = await getForecast(location);
+    res.json(forecast);
+    return forecast;
+
+  } catch (error) {
+    res.status(500).json({ error: error instanceof Error ? error.message : 'Internal Server Error' });
+    return error;
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+// Start the server **after** initialization
+const startServer = async () => {
+  await initializePromptTemplate(); // Ensure prompt template is initialized
+  app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+  });
+};
+
+startServer();
