@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+    text-align: center;
+  }
+  
+  nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #282c34;
+    padding: 10px;
+    color: white;
+    text-align: center;
+  }
+  
+  footer a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .project {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: calc(33.333% - 20px);
+  }
+  
+  .project h3 {
+    margin-top: 0;
+  }
+  
+  form div {
+    margin-bottom: 10px;
+  }
+  
+  form label {
+    display: block;
+  }
+  
+  form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  form span {
+    color: red;
+    font-size: 12px;
+  }
